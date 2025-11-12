@@ -1250,6 +1250,34 @@ footer {
     color: #4b2e83;
   }
 }
+/* ========================================= */
+/* ✅ FIX: Nur Navbar darf horizontal scrollen */
+/* ========================================= */
+
+@media (max-width: 768px) {
+  /* Global: kein horizontales Scrollen */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Ausnahme: innerhalb der Navbar darf horizontal gescrollt werden */
+  .nav-right {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .nav-right::-webkit-scrollbar {
+    display: none; /* Safari/Chrome */
+  }
+
+  /* Sicherheitsfix: keine globale Clipping-Beschränkung */
+  .navbar {
+    overflow: visible !important;
+  }
+}
+
 
 
 
