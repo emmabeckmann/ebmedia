@@ -778,4 +778,32 @@ footer {
   /* falls irgendein Elternteil quer clippt: */
   .strategy-page { overflow-x: hidden; }
 }
+/* 🚑 Sofort-Fix: Überschrift auf Strategien-Seite bricht IMMER korrekt um */
+@media (max-width: 768px) {
+  .strategy-page h1 {
+    white-space: normal !important;         /* niemals einzeilig klemmen */
+    word-break: break-all !important;       /* bricht notfalls mitten im Wort */
+    overflow-wrap: anywhere !important;     /* moderne Browser */
+    -webkit-hyphens: auto !important;       /* iOS Silbentrennung */
+    hyphens: auto !important;
+
+    /* etwas kleiner & mit sicherer Breite, damit nichts clippt */
+    font-size: clamp(1.8rem, 7vw, 2.4rem) !important;
+    line-height: 1.15 !important;
+    max-width: 92vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 4vw !important;
+
+    /* falls ein Vorfahr clippt */
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  /* nur zur Sicherheit: Container darf nicht clippen */
+  .strategy-page {
+    overflow-x: hidden !important;
+  }
+}
+
 
