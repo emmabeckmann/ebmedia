@@ -1262,4 +1262,69 @@ footer {
     color: #7a42ff !important;
   }
 }
+/* ========================================== */
+/* 💜 iPhone Navbar Fix – sichtbare Unterlängen + sauberes Scrollen */
+/* ========================================== */
+@media (max-width: 768px) {
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto !important;
+    padding: 10px 0 24px 0 !important; /* ⬇️ mehr Platz nach unten */
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .logo {
+    height: 100px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .brand {
+    font-size: 1.4rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .nav-right {
+    width: 100%;
+    display: block !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding: 8px 0 14px 0 !important; /* ✅ entscheidend: extra unten */
+  }
+
+  .nav-right::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .nav-links {
+    display: inline-flex !important;
+    gap: 30px !important;
+    padding: 0 16px !important;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    font-size: 1.2rem !important;
+    line-height: 2.1em !important; /* ✅ volle Buchstaben sichtbar */
+    font-weight: 600 !important;
+    color: #4b2e83 !important;
+    text-decoration: none !important;
+  }
+
+  .nav-links a:hover {
+    color: #7a42ff !important;
+  }
+}
+
 
