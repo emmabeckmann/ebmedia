@@ -1,5 +1,12 @@
+// ========================================
+// Jahr im Footer
+// ========================================
 document.getElementById('year').textContent = new Date().getFullYear();
 
+
+// ========================================
+// Aktive Navigationslinks hervorheben
+// ========================================
 const page = document.body.dataset.page;
 document.querySelectorAll('.nav-links a').forEach(a => {
   if (a.dataset.link === page) {
@@ -7,7 +14,11 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     a.style.fontWeight = '700';
   }
 });
-// 3D-Tilt für Elemente mit .media-tilt
+
+
+// ========================================
+// 3D-Tilt-Effekt für Elemente mit .media-tilt
+// ========================================
 (function tilt(){
   const els = document.querySelectorAll('.media-tilt');
   const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
@@ -24,7 +35,10 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   });
 })();
 
+
+// ========================================
 // Sanfte Einblendung beim Scrollen
+// ========================================
 (function revealOnScroll(){
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(el=>{
@@ -38,34 +52,57 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   }, {threshold: .12});
 
   document.querySelectorAll('.card, .strategy-card, .project, .project-grid img, .profile').forEach(el=>{
-    el.style.opacity = .0; el.style.transform = 'translateY(16px)'; obs.observe(el);
+    el.style.opacity = .0; 
+    el.style.transform = 'translateY(16px)'; 
+    obs.observe(el);
   });
 })();
 
-// Floating/Sticky Header bei Scroll
+
+// ========================================
+// Sticky Header beim Scrollen
+// ========================================
 (function headerScroll(){
   const nav = document.querySelector('.navbar');
   const onScroll = () => {
-    if(window.scrollY > 8){ nav.classList.add('scrolled'); }
-    else{ nav.classList.remove('scrolled'); }
+    if(window.scrollY > 8){ 
+      nav.classList.add('scrolled'); 
+    } else { 
+      nav.classList.remove('scrolled'); 
+    }
   };
   onScroll();
   window.addEventListener('scroll', onScroll, {passive:true});
 })();
 
-// Burger-Menü Toggle
+
+// ========================================
+// 📱 Hamburger-Menü (mobil)
+// ========================================
 (function mobileMenu(){
-  const btn = document.querySelector('.menu-toggle');
-  if(!btn) return;
-  btn.addEventListener('click', ()=>{
-    document.body.classList.toggle('menu-open');
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('mobile-nav');
+  if(!toggle || !nav) return;
+
+  toggle.addEventListener('click', () => {
+    const active = nav.classList.toggle('active');
+    // Symbol ändern: ☰ <-> ✕
+    toggle.textContent = active ? '✕' : '☰';
   });
-  // Schließen bei Link-Klick
+
+  // Menü schließen, wenn ein Link angeklickt wird
   document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.addEventListener('click', ()=> document.body.classList.remove('menu-open'));
+    a.addEventListener('click', () => {
+      nav.classList.remove('active');
+      toggle.textContent = '☰';
+    });
   });
 })();
 
+
+// ========================================
+// Parallax-Effekt für .pattern-layer
+// ========================================
 (function patternParallax(){
   const layer = document.querySelector('.pattern-layer');
   if(!layer) return;
@@ -73,13 +110,16 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   window.addEventListener('mousemove', (e)=>{
     const x = (e.clientX / window.innerWidth - .5);
     const y = (e.clientY / window.innerHeight - .5);
-    // kleine Verschiebung
     const offsetX = Math.round(x * 20);
     const offsetY = Math.round(y * 16);
     layer.style.backgroundPosition = `${offsetX}px ${offsetY}px`;
   }, {passive:true});
 })();
-/* Premium Tilt Cards */
+
+
+// ========================================
+// Premium Tilt Cards
+// ========================================
 document.querySelectorAll(".tilt").forEach(card => {
   card.addEventListener("mousemove", e => {
     const rect = card.getBoundingClientRect();
@@ -92,7 +132,11 @@ document.querySelectorAll(".tilt").forEach(card => {
     card.style.transform = "translateY(0) rotateX(0) rotateY(0)";
   });
 });
+
+
+// ========================================
 // Smooth Hover – Physics-Style
+// ========================================
 document.querySelectorAll(".strategy-box").forEach(box => {
   box.addEventListener("mousemove", e => {
     const rect = box.getBoundingClientRect();
