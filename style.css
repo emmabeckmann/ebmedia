@@ -755,3 +755,27 @@ footer {
     line-height: 1.6;
   }
 }
+/* iPhone Fix – lange Wörter in Strategien-Überschrift umbrechen */
+@media (max-width: 768px) {
+  .strategy-page h1 {
+    /* Größe bleibt elegant skalierend */
+    font-size: clamp(1.9rem, 7.2vw, 2.6rem);
+    line-height: 1.15;
+
+    /* sicheres Layout im Viewport */
+    max-width: 92vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 4vw;
+
+    /* 👉 wichtigste Zeilen: erlauben Umbruch innerhalb langer Wörter */
+    overflow-wrap: anywhere;     /* moderne Browser */
+    word-break: break-word;      /* Fallback */
+    hyphens: auto;               /* Silbentrennung */
+    -webkit-hyphens: auto;       /* iOS Safari */
+  }
+
+  /* falls irgendein Elternteil quer clippt: */
+  .strategy-page { overflow-x: hidden; }
+}
+
