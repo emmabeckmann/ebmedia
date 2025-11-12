@@ -1192,3 +1192,74 @@ footer {
     color: #7a42ff;
   }
 }
+/* ============================================== */
+/* 🔥 FINAL FIX – Mobile Navbar Höhe + sichtbarer Text */
+/* ============================================== */
+@media (max-width: 768px) {
+
+  /* sorgt dafür, dass wirklich nur der Nav-Hub scrollt */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  /* Navbar insgesamt etwas höher */
+  .navbar {
+    height: auto !important;
+    padding: 14px 0 20px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  }
+
+  /* Logo & Brand */
+  .logo {
+    height: 100px !important;
+    margin: 0 auto 6px auto !important;
+    display: block !important;
+  }
+
+  .brand {
+    font-size: 1.4rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Nav-Hub (scrollbarer Bereich) */
+  .nav-right {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    text-align: center !important;
+    padding: 10px 0 12px 0 !important; /* ✅ mehr Luft nach unten */
+  }
+
+  .nav-right::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Links im Hub */
+  .nav-links {
+    display: inline-flex !important;
+    gap: 32px !important;
+    padding: 0 16px !important;
+  }
+
+  .nav-links a {
+    display: inline-block !important;
+    font-size: 1.2rem !important;
+    line-height: 2.1em !important; /* ✅ Unterlängen sichtbar */
+    color: #4b2e83 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+  }
+
+  .nav-links a:hover {
+    color: #7a42ff !important;
+  }
+}
+
