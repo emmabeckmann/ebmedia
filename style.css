@@ -1106,227 +1106,88 @@ footer {
   }
 }
 /* ======================================== */
-/* 🔧 MOBILE NAVBAR – größer, luftiger, keine abgeschnittenen Buchstaben */
-/* ======================================== */
-
+/
+/* =============================== */
+/*   MOBILE NAVBAR – SCROLLBEREICH (OPTIMIERT) */
+/* =============================== */
 @media (max-width: 768px) {
-  /* Navbar insgesamt höher & zentrierter */
-  .navbar {
-    height: 120px !important;
-    padding: 14px 16px !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    justify-content: space-between !important;
-    background: rgba(255, 255, 255, 0.96) !important;
-    backdrop-filter: blur(12px) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
-  }
 
-  /* Logo größer und mittiger */
-  .logo {
-    height: 90px !important;
-    width: auto !important;
-    margin-top: 0 !important;
-    object-fit: contain !important;
-  }
-
-  /* Brand leicht vergrößert */
-  .brand {
-    font-size: 1.3rem !important;
-    font-weight: 600 !important;
-    color: #4b2e83 !important;
-    margin-left: 8px !important;
-  }
-
-  /* Scrollbarer Nav-Hub mit mehr vertikalem Raum */
-  .nav-right {
-    overflow-x: auto !important;
-    overflow-y: visible !important;
-    -webkit-overflow-scrolling: touch !important;
-    display: block !important;
-    white-space: nowrap !important;
-    padding: 14px 0 !important;
-    scrollbar-width: none !important; /* Firefox */
-  }
-
-  .nav-right::-webkit-scrollbar {
-    display: none !important; /* Safari/Chrome */
-  }
-
-  .nav-links {
-    display: inline-flex !important;
-    gap: 28px !important;
-    padding: 10px 10px !important;
-    justify-content: flex-start !important;
-  }
-
-  .nav-links a {
-    font-size: 1.2rem !important;
-    font-weight: 600 !important;
-    line-height: 1.5em !important;
-    padding-bottom: 4px !important;
-    color: #4b2e83 !important;
-    text-decoration: none !important;
-    display: inline-block !important;
-  }
-
-  /* optional: leichter Schatten unten für Tiefe */
-  .navbar::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  /* --- Globale Einstellungen --- */
+  html, body {
+    overflow-x: hidden !important;
     width: 100%;
-    height: 8px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.04), transparent);
   }
-}
-/* ======================================== */
-/* 🔧 MOBILE NAVBAR – mehr Höhe, Logo größer, keine abgeschnittenen Buchstaben */
-/* ======================================== */
 
-@media (max-width: 768px) {
-  /* Gesamte Navbar luftiger machen */
+  /* --- Navbar gesamt --- */
   .navbar {
+    flex-wrap: wrap;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    height: 150px !important;       /* höher */
-    padding: 12px 0 16px !important;
+    height: 160px !important;            /* mehr Platz für Logo & Text */
+    padding: 12px 0 16px 0 !important;
     background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(12px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
     z-index: 999;
+    overflow: visible !important;
   }
 
-  /* Logo größer und mittiger */
+  /* --- Logo & Markenname --- */
   .logo {
     height: 95px !important;
     width: auto;
-    margin-top: 0;
     object-fit: contain;
+    display: block;
+    margin: 0 auto 4px auto;
   }
 
-  /* Markenname leicht größer */
   .brand {
     font-size: 1.3rem !important;
     font-weight: 600;
     color: #4b2e83;
-    margin-top: 6px;
-  }
-
-  /* Nav-Bereich mit Scrollmöglichkeit & mehr Platz */
-  .nav-right {
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    padding: 10px 0 14px 0;
+    margin-bottom: 8px;
     text-align: center;
-    width: 100%;
-    scrollbar-width: none;
   }
 
-  .nav-right::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav-links {
-    display: inline-flex;
-    gap: 28px;
-    justify-content: center;
-    padding: 0 12px;
-  }
-
-  .nav-links a {
-    font-size: 1.2rem;
-    font-weight: 600;
-    line-height: 1.5em; /* Verhindert Abschneiden */
-    padding-bottom: 4px;
-    text-decoration: none;
-    color: #4b2e83;
-  }
-}
-/* ========================================= */
-/* ✅ FIX: Nur Navbar darf horizontal scrollen */
-/* ========================================= */
-
-@media (max-width: 768px) {
-  /* Global: kein horizontales Scrollen */
-  html, body {
-    overflow-x: hidden;
-  }
-
-  /* Ausnahme: innerhalb der Navbar darf horizontal gescrollt werden */
-  .nav-right {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    white-space: nowrap;
-    scrollbar-width: none;
-  }
-
-  .nav-right::-webkit-scrollbar {
-    display: none; /* Safari/Chrome */
-  }
-
-  /* Sicherheitsfix: keine globale Clipping-Beschränkung */
-  .navbar {
-    overflow: visible !important;
-  }
-}
-/* ========================================= */
-/* ✅ FINAL FIX – Navbar horizontal scrollbar, Seite bleibt fixiert */
-/* ========================================= */
-@media (max-width: 768px) {
-
-  /* Website darf nicht seitlich scrollen */
-  html, body {
-    overflow-x: hidden !important;
-    width: 100%;
-  }
-
-  /* Nur die Navigationsleiste darf horizontal scrollen */
-  .navbar {
-    overflow: visible !important;
-  }
-
+  /* --- Navigationsbereich (Hub) --- */
   .nav-right {
     display: block !important;
-    overflow-x: scroll !important;
+    width: 100%;
+    overflow-x: auto !important;            /* ✅ erlaubt horizontales Scrollen */
     overflow-y: visible !important;
     -webkit-overflow-scrolling: touch !important;
     white-space: nowrap !important;
-    width: 100%;
-    scrollbar-width: none; /* Firefox */
+    text-align: center;
+    scrollbar-width: none;                  /* Firefox: Scrollbar ausblenden */
+    padding-bottom: 8px;
   }
 
   .nav-right::-webkit-scrollbar {
-    display: none; /* Safari & Chrome */
+    display: none;                          /* Safari/Chrome: keine sichtbare Scrollbar */
   }
 
+  /* --- Links im Nav-Hub --- */
   .nav-links {
     display: inline-flex !important;
     gap: 28px;
-    padding: 10px 8px;
+    justify-content: center;
+    padding: 6px 14px;
   }
 
   .nav-links a {
     display: inline-block;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #4b2e83;
     text-decoration: none;
-    line-height: 1.5em;
+    color: #4b2e83;
+    line-height: 1.7em;
+    padding: 4px 0 2px 0;
+  }
+
+  .nav-links a:hover {
+    color: #7a42ff;
   }
 }
-
-
-
-
-
-
-
-
